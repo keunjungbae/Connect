@@ -1,0 +1,81 @@
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<div style="background: rgb(156, 241, 163);">   🌸 Spring is coming!🌻 <br />   what's the current weather? 🌿🌱</div>
+<html>
+<br /><br />
+<style>
+div {
+	color: rgb(221, 136, 238);
+	font-size: 80px;
+	font-weight: bold;
+	font-family: "Noteworthy", cursive, sans-serif;
+  text-align: center;
+}
+</style>
+	<head>
+		<title> Spring is coming! what's the current weather? </title>
+	</head>
+	<body>
+    Current weather in NewYork:
+    <button type="button" onclick="getTemp1()">Get NewYork Temp</button><br>
+
+
+    <span id="result"></span>°C
+		<br /> <br />
+
+    Current weather in Seoul:
+    <button type="button" onclick="getTemp2()">Get Seoul Temp</button><br>
+
+
+    <span id="result"></span>°C
+    <br /> <br />
+
+
+
+<script type="text/javascript">
+
+function getTemp1() {
+
+  console.log('Getting temp');
+
+
+    $.ajax({
+      url: "http://api.openweathermap.org/data/2.5/weather?id=5128581&units=Metric&APPID=d8687c6e4ca013f97936cbfb2c94c5c8",
+
+
+      dataType: 'json',
+      success: function(data) {
+        console.log("success", data.main.temp);
+        console.log(data);
+        document.getElementById("result").innerHTML = data.main.temp;
+      },
+      error: function() {
+        alert("error");
+
+      }
+    });
+  };
+
+	function getTemp2() {
+
+	  console.log('Getting temp');
+
+
+	    $.ajax({
+        url: "http://api.openweathermap.org/data/2.5/weather?id=1835848&units=Metric&APPID=d8687c6e4ca013f97936cbfb2c94c5c8",
+        dataType: 'json',
+	      success: function(data) {
+	        console.log("success", data.main.temp);
+	        console.log(data);
+	        document.getElementById("result").innerHTML = data.main.temp;
+	      },
+	      error: function() {
+
+	        alert("error");
+
+	      }
+	    });
+	  };
+
+</script>
